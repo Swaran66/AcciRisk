@@ -31,7 +31,15 @@ The project follows a rigorous data preprocessing and model development pipeline
   - **Deep Learning Model:** Artificial Neural Network (ANN), which captures complex patterns in crash data.
   - **Hybrid Model:** A stacking ensemble approach combining multiple ML models to improve generalization and robustness.
 
-### **4. Model Evaluation Metrics**
+### **4. Hyperparameter Tuning with Keras Tuner**
+- The **ANN model is optimized using Keras Tuner**, which automates the search for the best hyperparameters.
+- The hyperparameter tuning process optimizes:
+  - **Number of layers & neurons**
+  - **Learning rate & batch size**
+  - **Activation functions**
+- Using Keras Tuner significantly improves the ANN’s **classification accuracy, stability, and generalization**.
+
+### **5. Model Evaluation Metrics**
 - Model performance is assessed using multiple evaluation metrics:
   - **Precision, Recall, and F1-score:** To measure the balance between false positives and false negatives.
   - **ROC-AUC Curve:** To evaluate the classifier’s ability to distinguish between crash severity levels.
@@ -42,10 +50,10 @@ The project follows a rigorous data preprocessing and model development pipeline
 - **SMOTE oversampling** significantly improves prediction performance by ensuring minority class representations are well-learned, resulting in a **45% increase in accuracy compared to undersampling**.
 - The **hybrid stacking model outperforms traditional ML models by 12%**, demonstrating the effectiveness of combining multiple models for crash severity prediction.
 - **Artificial Neural Networks (ANN) outperform traditional ML models**, showcasing the power of deep learning in handling complex datasets. However, it **performs slightly worse than the hybrid model**, indicating that a combination of traditional and deep learning techniques offers the best results.
-- ANN’s accuracy varies across different severity classes, highlighting **inconsistencies in handling extreme severity cases**, such as fatal crashes.
+- **Keras Tuner optimization** enhances ANN performance, but **the ANN model shows uneven accuracy across different severity classes**, especially for underrepresented categories such as fatal crashes.
 
 ## **Installation & Usage**
 To replicate this project, install the necessary dependencies:
 
 ```bash
-pip install numpy pandas scikit-learn imbalanced-learn tensorflow matplotlib seaborn
+pip install numpy pandas scikit-learn imbalanced-learn tensorflow keras-tuner matplotlib seaborn
