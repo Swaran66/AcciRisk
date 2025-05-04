@@ -73,5 +73,4 @@ By integrating these methodologies, the project offers a robust and scalable sol
 
 ---
 
-## 📁 Repository Structure
 
