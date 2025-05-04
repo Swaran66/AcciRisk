@@ -1,8 +1,4 @@
-# 🚗 Vehicle Crash Severity Prediction using Machine Learning
-
-This repository contains the source code, data processing steps, and results for the course project **"Improving Vehicle Crash Severity Prediction Using Machine Learning Models"** developed for **DATA 532** at the University of North Dakota under the instruction of **Dr. Rajesh Godasu**.
-
----
+# 🚗 Improving Vehicle Crash Severity Prediction using Machine Learning Models
 
 ## 📌 Project Overview
 
