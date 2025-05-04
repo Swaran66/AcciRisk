@@ -1,59 +1,90 @@
-# Predicting Traffic Crash Severity Using Machine & Deep Learning
+Vehicle Crash Severity Prediction using Machine Learning
+This repository contains the source code, data processing steps, and results for a predictive modeling project titled "Improving Vehicle Crash Severity Prediction Using Machine Learning Models". The project was developed as part of the course DATA 532 under the guidance of Dr. Rajesh Godasu at the University of North Dakota.
 
-## Project Overview
+📌 Project Overview
+Accurately predicting crash severity plays a critical role in enhancing road safety and guiding emergency response. However, inconsistencies in crash data formats and severe class imbalance hinder the effectiveness and generalizability of most ML models.
 
-This project aims to predict traffic crash severity using advanced machine learning and deep learning models. The dataset used is obtained from the North Dakota Department of Transportation (NDDOT) website. Crash data collection follows a structured process carried out by police departments and other official agencies. However, this data is often unstructured, requiring extensive preprocessing, feature engineering, and handling of missing values before it becomes usable for predictive modeling.
+This project proposes:
 
-The project provides a **comprehensive, step-by-step framework** that demonstrates how raw crash data can be transformed into a structured dataset suitable for predictive modeling. It explores the impact of various factors such as **lighting conditions, weather, road surface conditions, speed of vehicles, driver demographics (age, gender), and alcohol/drug involvement** on crash severity. 
+A standardized feature mapping framework for crash data.
 
-## **Methodology**
+Robust handling of data imbalance using SMOTE and minority downsampling.
 
-The project follows a rigorous data preprocessing and model development pipeline, including the following steps:
+A novel stacked ensemble model combining multiple weak learners with meta-learners to improve classification performance.
 
-### **1. Data Preprocessing & Feature Engineering**
-- The raw dataset consists of multiple categorical and numerical features that require significant transformation.
-- Extensive feature engineering is performed to merge, categorize, and optimize features to improve model performance.
-- Certain feature categories, such as **driver behavior, environmental conditions, vehicle speed, and violation type**, are transformed into meaningful variables.
-- The final structured dataset consists of **150,000 rows**, representing individual crash incidents.
+🧰 Methodology
+1. Data Collection and Preprocessing
+Raw crash report dataset: 147,615 rows and 43 features
 
-### **2. Handling Class Imbalance**
-- The dataset has an inherent class imbalance, meaning that certain crash severity levels (e.g., fatal crashes) are significantly underrepresented.
-- Various resampling techniques are applied to balance the classes:
-  - **Undersampling:** Removing excessive majority class samples to create a balanced dataset.
-  - **SMOTE (Synthetic Minority Over-sampling Technique):** Creating synthetic samples to increase the representation of minority classes.
-- **SMOTE oversampling** is found to be the most effective, improving model prediction accuracy by over **45% compared to undersampling**.
+Cleaned dataset: 56,105 rows and 27 features
 
-### **3. Model Development**
-- A novel **hybrid classification model** is developed, combining state-of-the-art machine learning algorithms.
-- The hybrid model follows a **self-developed stacking ensemble structure**, integrating multiple models to achieve better predictive performance.
-- The following models are trained and evaluated:
-  - **Traditional ML Models:** Decision Trees, Random Forest, Gradient Boosting, XGBoost, and Support Vector Machines (SVM).
-  - **Deep Learning Model:** Artificial Neural Network (ANN), which captures complex patterns in crash data.
-  - **Hybrid Model:** A stacking ensemble approach combining multiple ML models to improve generalization and robustness.
+Preprocessing included:
 
-### **4. Hyperparameter Tuning with Keras Tuner**
-- The **ANN model is optimized using Keras Tuner**, which automates the search for the best hyperparameters.
-- The hyperparameter tuning process optimizes:
-  - **Number of layers & neurons**
-  - **Learning rate & batch size**
-  - **Activation functions**
-- Using Keras Tuner significantly improves the ANN’s **classification accuracy, stability, and generalization**.
+Feature engineering
 
-### **5. Model Evaluation Metrics**
-- Model performance is assessed using multiple evaluation metrics:
-  - **Precision, Recall, and F1-score:** To measure the balance between false positives and false negatives.
-  - **ROC-AUC Curve:** To evaluate the classifier’s ability to distinguish between crash severity levels.
-  - **Confusion Matrix Analysis:** To identify misclassifications and their impact on prediction accuracy.
+Handling missing values
 
-## **Results & Insights**
+Encoding categorical features
 
-- **SMOTE oversampling** significantly improves prediction performance by ensuring minority class representations are well-learned, resulting in a **45% increase in accuracy compared to undersampling**.
-- The **hybrid stacking model outperforms traditional ML models by 12%**, demonstrating the effectiveness of combining multiple models for crash severity prediction.
-- **Artificial Neural Networks (ANN) outperform traditional ML models**, showcasing the power of deep learning in handling complex datasets. However, it **performs slightly worse than the hybrid model**, indicating that a combination of traditional and deep learning techniques offers the best results.
-- **Keras Tuner optimization** enhances ANN performance, but **the ANN model shows uneven accuracy across different severity classes**, especially for underrepresented categories such as fatal crashes.
+Scaling numeric values
 
-## **Installation & Usage**
-To replicate this project, install the necessary dependencies:
+2. Imbalance Handling Techniques
+Minority Downsampling: Reduces the majority class (PDO) to match minority classes (fatal/injury), risking data loss.
 
-```bash
-pip install numpy pandas scikit-learn imbalanced-learn tensorflow keras-tuner matplotlib seaborn
+SMOTE: Synthetic oversampling for minority classes, preserving original data.
+
+3. Machine Learning Models Tested
+Logistic Regression
+
+Random Forest
+
+K-Nearest Neighbors
+
+Decision Tree
+
+Gradient Boosting
+
+Extra Trees
+
+Bagging Classifier
+
+4. Stacked Ensemble Model
+Combines probabilistic predictions from base learners using a meta-model (e.g., Logistic Regression or Extra Trees).
+
+Implements a two-level learning pipeline using Scikit-learn.
+
+Provides more accurate and balanced performance compared to individual models.
+
+5. Evaluation Metrics
+Precision
+
+Recall
+
+F1-Score
+
+Matthews Correlation Coefficient (MCC)
+
+📈 Results
+SMOTE provided better performance than downsampling for minority class representation.
+
+Stacked Model outperformed all individual classifiers in both accuracy and balance.
+
+Reproducibility was achieved by integrating Scikit-learn pipelines and fixing random seeds.
+
+📁 Files
+data/: Processed and raw crash datasets (if included or simulated).
+
+notebooks/: Jupyter notebooks with model development, training, and evaluation.
+
+models/: Serialized best-performing models (e.g., .pkl).
+
+presentation/: Final presentation slides (Data532_Presentation_SwaranjitRoy.pptx).
+
+README.md: Project summary and documentation.
+
+🔍 Key Takeaways
+A well-designed preprocessing and feature standardization workflow can significantly reduce model subjectivity.
+
+Hybrid stacking architectures are highly promising for imbalanced classification problems like crash severity prediction.
+
+Proper pipeline integration enhances reproducibility and modularity in ML workflows.
